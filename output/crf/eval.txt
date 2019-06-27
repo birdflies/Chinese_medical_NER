@@ -1,0 +1,12 @@
+Classification report: 
+              precision    recall  f1-score   support
+
+           B       0.92      0.91      0.91      3793
+           I       0.91      0.90      0.91      3793
+           E       0.92      0.94      0.93      9116
+           O       0.93      0.91      0.92      3701
+           S       0.00      0.00      0.00         5
+
+   micro avg       0.92      0.92      0.92     20408
+   macro avg       0.74      0.73      0.73     20408
+weighted avg       0.92      0.92      0.92     20408

@@ -141,5 +141,5 @@ python bert_ner.py --data_dir=data/ChinaDaily/ --bert_config_file=checkpoint/ber
 python bert_ner.py --data_dir=data/bxb/ --bert_config_file=checkpoint/bert_config.json --init_checkpoint=checkpoint/bert_model.ckpt --vocab_file=data/vocab.txt --output_dir=./output/bxb/
 
 # 添加blstm-crf层
-python bert_blstm_crf_ner.py --data_dir=data/bxb/ --bert_config_file=checkpoint/bert_config.json --init_checkpoint=checkpoint/bert_model.ckpt --vocab_file=data/vocab.txt --output_dir=./output/bxb_crf/
+python bert_blstm_crf_ner.py --data_dir=data/bxb/ --bert_config_file=checkpoint/bert_config.json --init_checkpoint=checkpoint/bert_model.ckpt --vocab_file=data/vocab.txt --output_dir=./output/bert_blstm_crf/
 ```

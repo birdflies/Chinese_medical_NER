@@ -74,7 +74,7 @@ flags.DEFINE_integer("predict_batch_size", 8,
 flags.DEFINE_float("learning_rate", 5e-5,
                    "The initial learning rate for Adam.")
 
-flags.DEFINE_float("num_train_epochs", 3.0,
+flags.DEFINE_float("num_train_epochs", 30,
                    "Total number of training epochs to perform.")
 
 flags.DEFINE_float("warmup_proportion", 0.1,
@@ -212,7 +212,7 @@ class NerProcessor(DataProcessor):
     def get_labels(self):
         # prevent potential bug for chinese text mixed with english text
         # return ["O", "B-PER", "I-PER", "B-ORG", "I-ORG", "B-LOC", "I-LOC", "X", "[CLS]", "[SEP]"]
-        return ["B", "I", "O", "E", "S", "X", "[CLS]", "[SEP]"]
+        return ["X", "B", "I", "E", "S", "O", "[CLS]", "[SEP]"]
 
 
 def write_tokens(tokens, mode):
@@ -515,11 +515,11 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
 
             def metric_fn(label_ids, pred_ids):
                 precision = tf_metrics.precision(
-                    label_ids, pred_ids, 8, [1, 2, 3, 4], average="macro")
+                    label_ids, pred_ids, 8, [1, 2, 3, 4, 5], average="macro")
                 recall = tf_metrics.recall(
-                    label_ids, pred_ids, 8, [1, 2, 3, 4], average="macro")
+                    label_ids, pred_ids, 8, [1, 2, 3, 4, 5], average="macro")
                 f = tf_metrics.f1(
-                    label_ids, pred_ids, 8, [1, 2, 3, 4], average="macro")
+                    label_ids, pred_ids, 8, [1, 2, 3, 4, 5], average="macro")
 
                 return {
                     "eval_precision": precision,

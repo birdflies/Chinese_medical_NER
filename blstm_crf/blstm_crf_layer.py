@@ -114,7 +114,7 @@ class BLSTM_CRF(object):
             output = tf.reshape(lstm_output, shape=[-1, self.hidden_unit * 2])
             pred = tf.matmul(output, W) + b
 
-            logits = tf.reshape(pred, [-1], self.max_seq_length, self.num_labels)
+            logits = tf.reshape(pred, [-1, self.max_seq_length, self.num_labels])
 
             return logits
 
